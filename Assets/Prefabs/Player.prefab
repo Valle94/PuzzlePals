@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6750543493735464344}
   - component: {fileID: 2474021973069450595}
   - component: {fileID: 5704509233470015852}
+  - component: {fileID: 7221962285267850123}
   - component: {fileID: 565587874653909345}
   m_Layer: 0
   m_Name: Player
@@ -190,6 +191,21 @@ MonoBehaviour:
   gravity: -9.81
   horizontalRotationSpeed: 15
   verticalRotationSpeed: 20
+--- !u!114 &7221962285267850123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8403516166795623246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd6693c50f1767b4291dcc640452affa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInteraction
+  camera: {fileID: 9182517049894796195}
+  playerInput: {fileID: 565587874653909345}
+  raycastLength: 10
 --- !u!114 &565587874653909345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
-  m_Actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: 884855cd0bf46de4b976a43f0dd627bb, type: 3}
   m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -216,8 +232,8 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: 
+  m_DefaultControlScheme: Keyboard&Mouse
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1 &8850272905618598798

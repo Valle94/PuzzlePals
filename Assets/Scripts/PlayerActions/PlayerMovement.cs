@@ -28,10 +28,6 @@ public class PlayerMovement : MonoBehaviour
         // Initialize Components
         if (characterController == null) { characterController = GetComponent<CharacterController>(); }
         if (camera == null) { camera = GetComponentInChildren<Camera>(); }
-
-        // Set cursor behavior
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -96,6 +92,5 @@ public class PlayerMovement : MonoBehaviour
     {
         lookInput = value.Get<Vector2>();
         playerRotation = new Vector3(-lookInput.y, lookInput.x, 0f);
-        Debug.Log(lookInput);
     }
 }

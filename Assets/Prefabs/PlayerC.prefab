@@ -293,8 +293,8 @@ MonoBehaviour:
   moveSpeed: 10
   jumpHeight: 2
   gravity: -9.81
-  horizontalRotationSpeed: 15
-  verticalRotationSpeed: 20
+  horizontalRotationSpeed: 100
+  verticalRotationSpeed: 150
 --- !u!114 &4869968468195494239
 MonoBehaviour:
   m_ObjectHideFlags: 0

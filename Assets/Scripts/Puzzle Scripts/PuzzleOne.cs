@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using System.Dynamic;
+using UnityEditor.Overlays;
 
 public class PuzzleOne : MonoBehaviour
 {
@@ -24,8 +25,8 @@ public class PuzzleOne : MonoBehaviour
     void Start()
     {
         // Double checks the canvas for both players are off
-        playerMKCanvas.enabled = false;
-        playerCCanvas.enabled = false;
+        playerMKCanvas.GetComponent<Canvas>().enabled = (false);
+        playerCCanvas.GetComponent<Canvas>().enabled = (false);
 
         // get the randome shape being used and assigns it to the text in the canvas too
         string shapeAns = GetRandomShape(passShapeList);
@@ -72,9 +73,12 @@ public class PuzzleOne : MonoBehaviour
     // When a player interacts with the puzzle their spefic UI will open
     public void Interact(GameObject player)
     {
+        Debug.Log(player.tag);
         if (player.CompareTag("Player1"))
         {
-            playerMKCanvas.enabled = true;
+            Debug.Log(player.CompareTag("Player1"));
+            playerMKCanvas.GetComponent<Canvas>().enabled = (true);
+
         }
 
         else if (player.CompareTag("Player2"))
@@ -88,7 +92,7 @@ public class PuzzleOne : MonoBehaviour
     {
         if (player.CompareTag("Player1"))
         {
-            playerMKCanvas.enabled = false;
+            playerMKCanvas.GetComponent<Canvas>().enabled = (false);
         }
 
         else if (player.CompareTag("Player2"))
@@ -112,7 +116,8 @@ public class PuzzleOne : MonoBehaviour
         {
             levelExit.isLocked = false;
             playerCCanvas.enabled = false;
-            playerMKCanvas.enabled = false;
+            playerMKCanvas.GetComponent<Canvas>().enabled = (false);
+
         }
     }
 }

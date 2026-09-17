@@ -18,8 +18,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveInput;
     private Vector2 lookInput;
     private Vector3 moveDirection;
-    private Vector3 playerRotation;
     private float verticalVelocity;
+    private float cameraPitch = 0f;
     private bool isGrounded;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -55,10 +55,14 @@ public class PlayerMovement : MonoBehaviour
     private void Rotate()
     {
         // Rotate the player around the y-axis (left/right)
-        transform.Rotate(0f, playerRotation.y * horizontalRotationSpeed * Time.deltaTime, 0f);
+        float horizontalRotation = lookInput.x * horizontalRotationSpeed * Time.deltaTime;
+        transform.Rotate(0f, horizontalRotation, 0f);
 
         // Rotate just the camera around the x-axis (up/down)
-        camera.transform.Rotate(playerRotation.x * verticalRotationSpeed * Time.deltaTime, 0f, 0f);
+        float verticalRotation = -lookInput.y * verticalRotationSpeed * Time.deltaTime;
+        cameraPitch += verticalRotation;
+        cameraPitch = Mathf.Clamp(cameraPitch, -90f, 90f);
+        camera.transform.localEulerAngles = new Vector3 (cameraPitch, 0f, 0f);
     }
 
     // This method calculates the vertical velocity of the player
@@ -91,6 +95,5 @@ public class PlayerMovement : MonoBehaviour
     public void OnLook(InputValue value)
     {
         lookInput = value.Get<Vector2>();
-        playerRotation = new Vector3(-lookInput.y, lookInput.x, 0f);
     }
 }

@@ -45,6 +45,7 @@ public class PlayerInteraction : MonoBehaviour
                 uiOpen = true;
                 Debug.Log($"You clicked a puzzle! UI Open: {uiOpen}");
                 playerInput.SwitchCurrentActionMap("UI");
+                Cursor.lockState = CursorLockMode.Confined;
                 Cursor.visible = true;
             }
             else
@@ -79,7 +80,7 @@ public class PlayerInteraction : MonoBehaviour
             uiOpen = false;
             Debug.Log($"Puzzle Closed. UI Open: {uiOpen}");
             playerInput.SwitchCurrentActionMap("Player");
-
+            Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
     }

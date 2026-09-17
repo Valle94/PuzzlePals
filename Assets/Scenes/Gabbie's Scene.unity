@@ -280,7 +280,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 188981356}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1390371760}
+        m_TargetAssemblyTypeName: PuzzleOne, Assembly-CSharp
+        m_MethodName: SubmitAnswer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &188981356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1823,6 +1835,7 @@ GameObject:
   - component: {fileID: 1390371759}
   - component: {fileID: 1390371758}
   - component: {fileID: 1390371757}
+  - component: {fileID: 1390371760}
   m_Layer: 0
   m_Name: Puzzle
   m_TagString: Puzzle
@@ -1923,6 +1936,33 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1390371755}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1390371760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390371755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdb73d109b590c34d9c860e26170ad34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PuzzleOne
+  ansText: {fileID: 1144770146}
+  ranShapetext: {fileID: 1458351363}
+  playerMKCanvas: {fileID: 1116436689}
+  playerCCanvas: {fileID: 514475418}
+  levelExit: {fileID: 2055266683}
+  passShapeList:
+  - Cube
+  - Diamond
+  - Triangle
+  - Square
+  passwordList:
+  - 1234
+  - 2468
+  - 1357
+  - 9876
 --- !u!1 &1402073956
 GameObject:
   m_ObjectHideFlags: 0
@@ -2515,7 +2555,7 @@ GameObject:
   - component: {fileID: 2055266680}
   - component: {fileID: 2055266683}
   m_Layer: 0
-  m_Name: Door Exit
+  m_Name: ExitDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2628,7 +2668,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelExit
   isLocked: 1
   door: {fileID: 2055266678}
-  puzzle: {fileID: 0}
+  puzzle: {fileID: 1390371755}
 --- !u!1 &2057489576
 GameObject:
   m_ObjectHideFlags: 0

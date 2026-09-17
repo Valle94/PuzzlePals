@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class LevelExit : MonoBehaviour
 {
-    [SerializeField] private bool isLocked = true;
+    [SerializeField] public bool isLocked = true;
     [SerializeField] private GameObject door;
     [SerializeField] private GameObject puzzle;
     void Start()
@@ -20,4 +20,6 @@ public class LevelExit : MonoBehaviour
         }
 
     }
+
+
 }

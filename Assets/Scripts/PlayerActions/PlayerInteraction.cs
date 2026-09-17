@@ -8,6 +8,7 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] Camera camera;
     [SerializeField] PlayerInput playerInput;
     [SerializeField] Image crosshair;
+    [SerializeField] PuzzleOne puzzleOne;
 
     [Header("Variables")]
     [Range(1, 1000)]
@@ -46,6 +47,7 @@ public class PlayerInteraction : MonoBehaviour
                 Debug.Log($"You clicked a puzzle! UI Open: {uiOpen}");
                 playerInput.SwitchCurrentActionMap("UI");
                 Cursor.visible = true;
+                puzzleOne.Interact(gameObject);
             }
             else
             {
@@ -81,6 +83,8 @@ public class PlayerInteraction : MonoBehaviour
             playerInput.SwitchCurrentActionMap("Player");
 
             Cursor.visible = false;
+
+            puzzleOne.OnClose(gameObject);
         }
     }
 

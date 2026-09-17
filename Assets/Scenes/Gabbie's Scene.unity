@@ -757,7 +757,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &514475415
 RectTransform:
   m_ObjectHideFlags: 0
@@ -826,7 +826,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 514475414}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -1363,7 +1363,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1116436686
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1434,7 +1434,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116436685}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -1958,11 +1958,6 @@ MonoBehaviour:
   - Diamond
   - Triangle
   - Square
-  passwordList:
-  - 1234
-  - 2468
-  - 1357
-  - 9876
 --- !u!1 &1402073956
 GameObject:
   m_ObjectHideFlags: 0
@@ -2420,9 +2415,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7221962285267850123, guid: efb51449c8aeeed4bb428e6f8470a89c, type: 3}
+      propertyPath: puzzleOne
+      value: 
+      objectReference: {fileID: 1390371760}
     - target: {fileID: 8403516166795623246, guid: efb51449c8aeeed4bb428e6f8470a89c, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8403516166795623246, guid: efb51449c8aeeed4bb428e6f8470a89c, type: 3}
+      propertyPath: m_TagString
+      value: Player1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

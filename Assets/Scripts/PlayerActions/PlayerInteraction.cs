@@ -48,7 +48,9 @@ public class PlayerInteraction : MonoBehaviour
                 playerInput.SwitchCurrentActionMap("UI");
                 Cursor.lockState = CursorLockMode.Confined;
                 Cursor.visible = true;
-                puzzleOne.Interact(gameObject);
+                PuzzleOne puzzle = hit.collider.GetComponent<PuzzleOne>();
+                puzzle.Interact(this.gameObject);
+                //puzzleOne.Interact(gameObject);
             }
             else
             {

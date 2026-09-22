@@ -8,7 +8,6 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] Camera camera;
     [SerializeField] PlayerInput playerInput;
     [SerializeField] Image crosshair;
-    [SerializeField] PuzzleOne puzzleOne;
 
     [Header("Variables")]
     [Range(1, 1000)]
@@ -76,7 +75,7 @@ public class PlayerInteraction : MonoBehaviour
     }
 
     // This method closes the UI window 
-    private void CloseUI()
+    public void CloseUI()
     {
         if (uiOpen == true)
         {
@@ -87,7 +86,8 @@ public class PlayerInteraction : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
-            puzzleOne.OnClose(gameObject);
+            PuzzleOne puzzle = FindAnyObjectByType<PuzzleOne>();
+            puzzle.OnClose(this.gameObject);
         }
     }
 

@@ -11,19 +11,15 @@ public class PlayerInteraction : MonoBehaviour
 
     [Header("Variables")]
     [Range(1, 1000)]
-    [SerializeField] float raycastLength = 10; 
+    [SerializeField] float raycastLength = 10;
 
     private bool uiOpen = false;    // TEMP: Bool used for debugging purposes
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (camera == null) {camera = GetComponentInChildren<Camera>();}
-        if (playerInput == null) {playerInput = GetComponentInChildren<PlayerInput>();}
-
-        // Set cursor behavior
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        if (camera == null) { camera = GetComponentInChildren<Camera>(); }
+        if (playerInput == null) { playerInput = GetComponentInChildren<PlayerInput>(); }
     }
 
     // Update is called once per frame
@@ -45,8 +41,8 @@ public class PlayerInteraction : MonoBehaviour
                 uiOpen = true;
                 Debug.Log($"You clicked a puzzle! UI Open: {uiOpen}");
                 playerInput.SwitchCurrentActionMap("UI");
-                Cursor.lockState = CursorLockMode.Confined;
-                Cursor.visible = true;
+                CursorManager cursorManager = FindAnyObjectByType<CursorManager>();
+                cursorManager.ShowCursor();
                 PuzzleOne puzzle = hit.collider.GetComponent<PuzzleOne>();
                 puzzle.Interact(this.gameObject);
                 //puzzleOne.Interact(gameObject);
@@ -83,8 +79,8 @@ public class PlayerInteraction : MonoBehaviour
             uiOpen = false;
             Debug.Log($"Puzzle Closed. UI Open: {uiOpen}");
             playerInput.SwitchCurrentActionMap("Player");
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            CursorManager cursorManager = FindAnyObjectByType<CursorManager>();
+            cursorManager.HideCursor();
 
             PuzzleOne puzzle = FindAnyObjectByType<PuzzleOne>();
             puzzle.OnClose(this.gameObject);

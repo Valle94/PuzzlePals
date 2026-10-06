@@ -4,7 +4,7 @@ public class MultiDisplayManager : MonoBehaviour
 {
     void Start()
     {
-        StartSecondDisplay();
+        
     }
 
     public void StartSecondDisplay()

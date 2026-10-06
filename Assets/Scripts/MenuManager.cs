@@ -28,4 +28,16 @@ public class MenuManager : MonoBehaviour
         Debug.Log("Quit Game Pressed");
 #endif
     }
+
+    public void OpenInGameMenu()
+    {
+        CursorManager cursorManager = FindAnyObjectByType<CursorManager>();
+        cursorManager.ShowCursor();
+
+        foreach (GameObject panel in panels)
+        {
+            if (panel.name == "InGamePanel") { panel.SetActive(true); }
+            else { panel.SetActive(false); }
+        }
+    }
 }

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class PlayerInteraction : MonoBehaviour
     [Header("Variables")]
     [Range(1, 1000)]
     [SerializeField] float raycastLength = 10;
+
+    public UnityEvent onEscapePressed;
 
     private bool uiOpen = false;    // TEMP: Bool used for debugging purposes
 
@@ -96,5 +99,14 @@ public class PlayerInteraction : MonoBehaviour
     public void OnCancel(InputValue value)
     {
         CloseUI();
+    }
+
+
+    public void OnEscape()
+    {
+        MenuManager menuManager = FindAnyObjectByType<MenuManager>();
+        menuManager.OpenInGameMenu();
+        playerInput.SwitchCurrentActionMap("UI");
+        onEscapePressed?.Invoke();
     }
 }

@@ -4,6 +4,11 @@ public class MultiDisplayManager : MonoBehaviour
 {
     void Start()
     {
+        
+    }
+
+    public void StartSecondDisplay()
+    {
         Debug.Log("Displays connected: " + Display.displays.Length);
 
         // Display.displays[0] is primary and active by default.

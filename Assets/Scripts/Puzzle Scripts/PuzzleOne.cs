@@ -54,11 +54,6 @@ public class PuzzleOne : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-
-    }
-
     // The Function Gets a random index from the list given and returns that string to be used as our password shape
     public string GetRandomShape(List<string> passwordList)
     {

@@ -11,15 +11,15 @@ public class PlayerInteraction : MonoBehaviour
 
     [Header("Variables")]
     [Range(1, 1000)]
-    [SerializeField] float raycastLength = 10; 
+    [SerializeField] float raycastLength = 10;
 
     private bool uiOpen = false;    // TEMP: Bool used for debugging purposes
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (camera == null) {camera = GetComponentInChildren<Camera>();}
-        if (playerInput == null) {playerInput = GetComponentInChildren<PlayerInput>();}
+        if (camera == null) { camera = GetComponentInChildren<Camera>(); }
+        if (playerInput == null) { playerInput = GetComponentInChildren<PlayerInput>(); }
 
         // Set cursor behavior
         Cursor.visible = false;
@@ -47,9 +47,24 @@ public class PlayerInteraction : MonoBehaviour
                 playerInput.SwitchCurrentActionMap("UI");
                 Cursor.lockState = CursorLockMode.Confined;
                 Cursor.visible = true;
-                PuzzleOne puzzle = hit.collider.GetComponent<PuzzleOne>();
-                puzzle.Interact(this.gameObject);
-                //puzzleOne.Interact(gameObject);
+
+                Debug.Log(hit.transform.name);
+                switch (hit.collider.name)
+                {
+                    case "Puzzle1":
+                        PuzzleOne puzzle = hit.collider.GetComponent<PuzzleOne>();
+                        puzzle.Interact(this.gameObject);
+                        break;
+
+                    case "Puzzle2":
+                        Puzzle2 puzzle2 = hit.collider.GetComponent<Puzzle2>();
+                        puzzle2.Interact(this.gameObject);
+                        break;
+
+                    default:
+                        Debug.Log("Shape Not Found");
+                        break;
+                }
             }
             else
             {

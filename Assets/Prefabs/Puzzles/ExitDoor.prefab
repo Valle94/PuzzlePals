@@ -68,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0221917d3db933440b410d469990bf6e, type: 2}
+  - {fileID: 2100000, guid: 19a0629b163f7e8479a5031390981bba, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -128,3 +128,4 @@ MonoBehaviour:
   isLocked: 1
   door: {fileID: 7845903767259826522}
   puzzle: {fileID: 0}
+  unlockedMaterial: {fileID: 0}

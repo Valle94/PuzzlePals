@@ -3046,7 +3046,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 819119964927725683, guid: 02479a3cf3dd45d48be9bb93b8f1dbf2, type: 3}
         m_TargetAssemblyTypeName: CursorManager, Assembly-CSharp
         m_MethodName: HideCursor
         m_Mode: 1
@@ -3058,9 +3058,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4874697301582767746, guid: afae1dc9391b43a47a833137bdd8bdbb, type: 3}
         m_TargetAssemblyTypeName: MultiDisplayManager, Assembly-CSharp
-        m_MethodName: StartSecondDisplay
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

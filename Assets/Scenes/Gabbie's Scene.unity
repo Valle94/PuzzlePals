@@ -6328,15 +6328,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3277859754618276515, guid: 7d0649af3ee140c4792cad151d94566f, type: 3}
       propertyPath: m_Name
-      value: Puzzle
-      objectReference: {fileID: 0}
-    - target: {fileID: 3625584378231811256, guid: 7d0649af3ee140c4792cad151d94566f, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000979030997254090, guid: 7d0649af3ee140c4792cad151d94566f, type: 3}
-      propertyPath: m_Enabled
-      value: 0
+      value: Puzzle1
       objectReference: {fileID: 0}
     - target: {fileID: 4245610861950237847, guid: 7d0649af3ee140c4792cad151d94566f, type: 3}
       propertyPath: levelExit

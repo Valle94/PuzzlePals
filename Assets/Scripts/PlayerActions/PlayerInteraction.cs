@@ -46,9 +46,24 @@ public class PlayerInteraction : MonoBehaviour
                 playerInput.SwitchCurrentActionMap("UI");
                 CursorManager cursorManager = FindAnyObjectByType<CursorManager>();
                 cursorManager.ShowCursor();
-                PuzzleOne puzzle = hit.collider.GetComponent<PuzzleOne>();
-                puzzle.Interact(this.gameObject);
-                //puzzleOne.Interact(gameObject);
+
+                Debug.Log(hit.transform.name);
+                switch (hit.collider.name)
+                {
+                    case "Puzzle1":
+                        PuzzleOne puzzle = hit.collider.GetComponent<PuzzleOne>();
+                        puzzle.Interact(this.gameObject);
+                        break;
+
+                    case "Puzzle2":
+                        Puzzle2 puzzle2 = hit.collider.GetComponent<Puzzle2>();
+                        puzzle2.Interact(this.gameObject);
+                        break;
+
+                    default:
+                        Debug.Log("Shape Not Found");
+                        break;
+                }
             }
             else
             {

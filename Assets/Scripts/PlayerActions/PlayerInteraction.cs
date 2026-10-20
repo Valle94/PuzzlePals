@@ -102,6 +102,8 @@ public class PlayerInteraction : MonoBehaviour
 
             PuzzleOne puzzle = FindAnyObjectByType<PuzzleOne>();
             puzzle.OnClose(this.gameObject);
+            Puzzle2 puzzle2 = FindAnyObjectByType<Puzzle2>();
+            puzzle2.OnClose(this.gameObject);
         }
     }
 
@@ -119,6 +121,7 @@ public class PlayerInteraction : MonoBehaviour
 
     public void OnEscape()
     {
+        Debug.Log("EscapePressed");
         MenuManager menuManager = FindAnyObjectByType<MenuManager>();
         menuManager.OpenInGameMenu();
         playerInput.SwitchCurrentActionMap("UI");

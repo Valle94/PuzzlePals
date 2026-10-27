@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +23,12 @@ public class Puzzle3 : MonoBehaviour
     [SerializeField] private Button[] playerOneButtons; // Assign your 4 color buttons here in inspector (0 to 3)
     [SerializeField] private Button[] playerTwoButtons; // Assign your 4 color buttons here in inspector (0 to 3)
     [SerializeField] private Button readyButton;
+
+    [Header("Audio")]
+    [SerializeField] private AudioSource leftAudio;
+    [SerializeField] private AudioSource rightAudio;
+    [SerializeField] AudioClip failSound;
+    [SerializeField] private AudioClip[] buttonSounds;
 
     [Header("Door")]
     [SerializeField] private LevelExit levelExit;
@@ -56,6 +63,7 @@ public class Puzzle3 : MonoBehaviour
 
     public void OnClose(GameObject player)
     {
+        ResetPuzzle();
         if (player.CompareTag("Player1"))
         {
             playerMKCanvas.GetComponent<Canvas>().enabled = (false);
@@ -68,6 +76,7 @@ public class Puzzle3 : MonoBehaviour
 
     public void ReadyButtonClicked()
     {
+        if (playerCCanvas.GetComponent<Canvas>().enabled == (false)) { return; }
         readyButton.enabled = false;
         readyButton.GetComponentInChildren<TextMeshProUGUI>().text = "Begin!";
         StartCoroutine(RunSimonGame());
@@ -92,6 +101,9 @@ public class Puzzle3 : MonoBehaviour
             {
                 Debug.Log("Game Over! You entered the wrong sequence.");
                 SetButtonsInteractable(false);
+                leftAudio.PlayOneShot(failSound, 0.1f);
+                rightAudio.PlayOneShot(failSound, 0.1f);
+
                 ResetPuzzle();
             }
 
@@ -143,7 +155,7 @@ public class Puzzle3 : MonoBehaviour
             Image image = playerTwoButtons[index].GetComponent<Image>();
             image.sprite = litImages[index];
 
-            // TODO: Add SoundFX here
+            rightAudio.PlayOneShot(buttonSounds[index]);
 
             yield return new WaitForSeconds(flashDuration);
 
@@ -155,7 +167,7 @@ public class Puzzle3 : MonoBehaviour
             Image image = playerOneButtons[index].GetComponent<Image>();
             image.sprite = litImages[index];
 
-            // TODO: Add SoundFX here
+            leftAudio.PlayOneShot(buttonSounds[index]);
 
             yield return new WaitForSeconds(flashDuration);
 

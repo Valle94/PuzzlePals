@@ -19,9 +19,6 @@ public class SimonPuzzle : MonoBehaviour
     private enum State { WaitingToStart, PlayingSequence, WaitingForPlayer, Failed, Completed }
     private State currentState = State.WaitingToStart;
 
-    private bool isWaitingForClick = false;
-    private int expectedButtonIndex = -1;
-
     void Start()
     {
         // Hook up button listeners automatically or do it in the Inspector
@@ -154,7 +151,7 @@ public class SimonPuzzle : MonoBehaviour
         }
         else
         {
-            Debug.Log($"Correct step! ({userSequence.Count}/{expectedButtonIndex})");
+            Debug.Log($"Correct step! Clicked {index}, expected {masterSequence[currentIndex]} ({userSequence.Count} so far)");
         }
     }
 

@@ -7,6 +7,7 @@ public class LevelExit : MonoBehaviour
     [SerializeField] private GameObject door;
     [SerializeField] private GameObject puzzle;
     [SerializeField] private Material unlockedMaterial;
+    [SerializeField] private AudioManager audioManager;
 
     private Renderer doorRenderer;
     private Collider doorCollider;
@@ -23,6 +24,8 @@ public class LevelExit : MonoBehaviour
     {
         if (!isLocked)
         {
+            // Play Correct Audio Clip
+            audioManager.PlayDoorUnlock();
             // Change the door to green
             doorRenderer.material = unlockedMaterial;
 

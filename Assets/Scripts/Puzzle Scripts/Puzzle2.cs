@@ -23,6 +23,7 @@ public class Puzzle2 : MonoBehaviour
 
     [Header("Door")]
     [SerializeField] private LevelExit levelExit;
+    [SerializeField] private AudioManager audioManager;
 
     [Header("Puzzle Data")]
     [SerializeField] bool completePuzzle = false;
@@ -147,6 +148,7 @@ public class Puzzle2 : MonoBehaviour
         
         if (playerShadedSquares.Count != correctShadedSquares.Count)
         {
+            audioManager.PlayIncorrectAnswer();
             Debug.Log("Incorrect pattern!");
             return;
         }
@@ -188,6 +190,7 @@ public class Puzzle2 : MonoBehaviour
         if (selectedGridSize == gridSize &&
     selectedShadedAmount == shadedAmount)
         {
+            audioManager.PlayDoorUnlock();
             Debug.Log("Correct answers!");
 
             panelOne.SetActive(false);
@@ -201,6 +204,7 @@ public class Puzzle2 : MonoBehaviour
         }
         else
         {
+            audioManager.PlayIncorrectAnswer();
             Debug.Log("Incorrect answers! Try again.");
         }
     }

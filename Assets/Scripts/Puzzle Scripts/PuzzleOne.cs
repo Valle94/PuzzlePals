@@ -15,6 +15,7 @@ public class PuzzleOne : MonoBehaviour
 
     [Header("Level Exit")]
     [SerializeField] private LevelExit levelExit;
+    [SerializeField] private AudioManager audioManager;
 
     [SerializeField] private List<string> passShapeList = new List<string>() { "Cube", "Diamond", "Triangle", "Square" };
     private string password;
@@ -97,6 +98,7 @@ public class PuzzleOne : MonoBehaviour
     //If it is right and the puzzle is compleet the UI truns off for both players
     public void SubmitAnswer()
     {
+        audioManager.PlayButtonClick();
         string playerAns = ansText.text;
         
         if (playerAns == password)

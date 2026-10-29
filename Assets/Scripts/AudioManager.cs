@@ -14,7 +14,6 @@ public class AudioManager : MonoBehaviour
 
     [Header("Sound Effects")]
     [SerializeField] private AudioClip buttonClick;
-    [SerializeField] private AudioClip correctAnswer;
     [SerializeField] private AudioClip incorrectAnswer;
     [SerializeField] private AudioClip doorUnlock;
 
@@ -34,11 +33,6 @@ public class AudioManager : MonoBehaviour
     public void PlayButtonClick()
     {
         sfxSource.PlayOneShot(buttonClick);
-    }
-
-    public void PlayCorrectAnswer()
-    {
-        sfxSource.PlayOneShot(correctAnswer);
     }
 
     public void PlayIncorrectAnswer()

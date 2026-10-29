@@ -42,6 +42,6 @@ public class AudioManager : MonoBehaviour
 
     public void PlayDoorUnlock()
     {
-        sfxSource.PlayOneShot(doorUnlock);
+        sfxSource.PlayOneShot(doorUnlock, 0.3f);
     }
 }

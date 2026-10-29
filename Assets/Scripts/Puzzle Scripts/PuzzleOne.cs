@@ -108,7 +108,7 @@ public class PuzzleOne : MonoBehaviour
 
         if (completePuzzle == true)
         {
-            levelExit.isLocked = false;
+            levelExit.UnlockDoor();
             playerCCanvas.GetComponent<Canvas>().enabled = (false);
             playerMKCanvas.GetComponent<Canvas>().enabled = (false);
 

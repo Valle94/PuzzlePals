@@ -22,16 +22,19 @@ public class LevelExit : MonoBehaviour
 
     void Update()
     {
-        if (!isLocked)
-        {
-            // Play Correct Audio Clip
-            audioManager.PlayDoorUnlock();
-            // Change the door to green
-            doorRenderer.material = unlockedMaterial;
 
-            // Turn off the collider
-            doorCollider.enabled = false;
-        }
+    }
+
+    public void UnlockDoor()
+    {
+        isLocked = false;
+        // Play Correct Audio Clip
+        audioManager.PlayDoorUnlock();
+        // Change the door to green
+        doorRenderer.material = unlockedMaterial;
+
+        // Turn off the collider
+        doorCollider.enabled = false;
     }
 }
 

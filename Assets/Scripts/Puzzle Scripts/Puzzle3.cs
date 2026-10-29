@@ -120,7 +120,7 @@ public class Puzzle3 : MonoBehaviour
         Debug.Log("Puzzle Completed Successfully!");
         readyButton.enabled = false;
         readyButton.GetComponentInChildren<TextMeshProUGUI>().text = "Well Done!";
-        levelExit.isLocked = false;
+        levelExit.UnlockDoor();
     }
 
     IEnumerator PlaySequenceRoutine(int length)
@@ -225,6 +225,12 @@ public class Puzzle3 : MonoBehaviour
     {
         // Stop any running coroutines just in case
         StopAllCoroutines();
+
+        for (int i = 0; i < playerOneButtons.Length; i++)
+        {
+            Image image = playerOneButtons[i].GetComponent<Image>();
+            image.sprite = darkImages[i];
+        }
 
         currentState = State.WaitingToStart;
         userSequence.Clear();

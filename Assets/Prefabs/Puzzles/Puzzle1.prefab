@@ -2210,7 +2210,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4192267930075908640}
         m_TargetAssemblyTypeName: PuzzleOne, Assembly-CSharp
         m_MethodName: SubmitAnswer
         m_Mode: 1
@@ -2763,6 +2763,7 @@ MonoBehaviour:
   playerMKCanvas: {fileID: 6297844891610203204}
   playerCCanvas: {fileID: 2232532108833201993}
   levelExit: {fileID: 0}
+  audioManager: {fileID: 0}
   passShapeList:
   - Cube
   - Diamond

@@ -319,7 +319,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6793259094891179349}
         m_TargetAssemblyTypeName: Puzzle2, Assembly-CSharp
         m_MethodName: SubmitGrid
         m_Mode: 1
@@ -2032,6 +2032,7 @@ MonoBehaviour:
   playerTwoGridParent: {fileID: 9211988593823013605}
   gridButtonPrefab: {fileID: 7695762077314422865, guid: 79f909ef96590754585c0b0a818a2a65, type: 3}
   levelExit: {fileID: 0}
+  audioManager: {fileID: 0}
   completePuzzle: 0
 --- !u!1 &4871494963763846774
 GameObject:
@@ -2532,7 +2533,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6793259094891179349}
         m_TargetAssemblyTypeName: Puzzle2, Assembly-CSharp
         m_MethodName: SubmitQuestions
         m_Mode: 1

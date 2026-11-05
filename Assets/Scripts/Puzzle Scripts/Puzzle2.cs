@@ -157,6 +157,7 @@ public class Puzzle2 : MonoBehaviour
         {
             if (!playerShadedSquares.Contains(square))
             {
+                audioManager.PlayIncorrectAnswer();
                 Debug.Log("Incorrect pattern!");
                 return;
             }

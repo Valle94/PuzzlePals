@@ -98,12 +98,16 @@ public class PuzzleOne : MonoBehaviour
     //If it is right and the puzzle is compleet the UI truns off for both players
     public void SubmitAnswer()
     {
-        audioManager.PlayButtonClick();
         string playerAns = ansText.text;
         
         if (playerAns == password)
         {
             completePuzzle = true;
+        }
+
+        else
+        {
+            audioManager.PlayIncorrectAnswer();
         }
 
         if (completePuzzle == true)

@@ -7,10 +7,8 @@ apply
 array
 asset
 async
-atlas
 audio
 await
-baker
 batch
 blend
 bloom
@@ -65,11 +63,9 @@ macro
 magic
 match
 merge
-metal
 mixer
 model
 morph
-motor
 mount
 mouse
 music
@@ -117,11 +113,9 @@ speed
 split
 stack
 start
-steer
 style
 super
 sweep
-sword
 timer
 token
 trace

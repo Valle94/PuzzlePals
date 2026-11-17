@@ -62,6 +62,7 @@ public class Puzzle4 : MonoBehaviour
         playerMKCanvas.GetComponent<Canvas>().enabled = false;
         playerCCanvas.GetComponent<Canvas>().enabled = false;
         guessInput.characterLimit = wordLength;
+        submitButton.GetComponentInChildren<TextMeshProUGUI>().text = "Submit";
         SetInputInteractable(false);
         LoadWordLists();
         ClearAllTiles();
@@ -96,6 +97,7 @@ public class Puzzle4 : MonoBehaviour
     private void StartNewRound()
     {
         if (currentState == State.PlayerGuessing) return; // already running
+        submitButton.GetComponentInChildren<TextMeshProUGUI>().text = "Submit";
         GenerateMasterWord();
         currentRow = 0;
         currentState = State.PlayerGuessing;
@@ -115,10 +117,16 @@ public class Puzzle4 : MonoBehaviour
         Debug.Log($"Master Word: {masterWord}");
     }
 
+    public void OnButtonPressed()
+    {
+        if (currentState == State.PlayerGuessing) OnGuessSubmitted(); // already running
+        else if (currentState == State.Lost) ResetPuzzle(); // already running
+    }
+
     // ============================================================
     // Player 1 submits a guess
     // ============================================================
-    public void OnGuessSubmitted()
+    private void OnGuessSubmitted()
     {
         if (currentState != State.PlayerGuessing) return;
         if (currentRow >= maxGuesses) return;
@@ -155,6 +163,7 @@ public class Puzzle4 : MonoBehaviour
         // Win?
         if (guess == masterWord)
         {
+            //comment
             currentState = State.Won;
             UpdateRemainingUI();          // NEW
             rightAudio.PlayOneShot(successSound, 0.3f);
@@ -172,9 +181,8 @@ public class Puzzle4 : MonoBehaviour
             Debug.Log($"Out of guesses. The word was {masterWord}.");
             leftAudio.PlayOneShot(failSound, 0.2f);
             rightAudio.PlayOneShot(failSound, 0.2f);
-            yield return new WaitForSeconds(1.0f);
-            ResetPuzzle();
-            StartNewRound();  // fresh word, still in the open panel
+            submitButton.GetComponentInChildren<TextMeshProUGUI>().text = "Retry";
+            submitButton.enabled = true;
             yield break;
         }
 
@@ -247,6 +255,7 @@ public class Puzzle4 : MonoBehaviour
     // ============================================================
     public void ResetPuzzle()
     {
+        StartNewRound();
         StopAllCoroutines();
         currentState = State.Idle;
         currentRow = 0;
@@ -288,13 +297,13 @@ public class Puzzle4 : MonoBehaviour
 
         if (currentState == State.Won)
             foreach (TextMeshProUGUI textfield in remainingGuessesTexts)
-            textfield.text = "Solved!";
+                textfield.text = "Solved!";
         else if (currentState == State.Lost)
             foreach (TextMeshProUGUI textfield in remainingGuessesTexts)
-            textfield.text = "0 Guesses Remaining";
+                textfield.text = "0 Guesses Remaining";
         else
             foreach (TextMeshProUGUI textfield in remainingGuessesTexts)
-            textfield.text = $"{maxGuesses - currentRow} Guesses Remaining";
+                textfield.text = $"{maxGuesses - currentRow} Guesses Remaining";
     }
 
     private void WriteGuessToPlayer1Grid(int row, string guess)

@@ -38,6 +38,14 @@ public class PlayerInteraction : MonoBehaviour
 
         if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit, raycastLength))
         {
+            // Restart object: reload the current scene
+            RestartGame restart = hit.collider.GetComponentInParent<RestartGame>();
+            if (restart != null && uiOpen == false)
+            {
+                restart.Interact(this.gameObject);
+                return;
+            }
+
             if (hit.collider.tag == "Puzzle" && uiOpen == false)
             {
                 // TEMP: Simulate opening a UI Puzzle
@@ -83,7 +91,8 @@ public class PlayerInteraction : MonoBehaviour
         RaycastHit puzzleHover;
 
         if (Physics.Raycast(camera.transform.position, camera.transform.forward, out puzzleHover, raycastLength)
-            && puzzleHover.collider.tag == "Puzzle")
+            && (puzzleHover.collider.tag == "Puzzle"
+                || puzzleHover.collider.GetComponentInParent<RestartGame>() != null))
         {
             crosshair.color = Color.green;
         }

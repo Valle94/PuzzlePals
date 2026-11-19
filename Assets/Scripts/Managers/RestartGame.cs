@@ -15,17 +15,7 @@ public class RestartGame : MonoBehaviour
 
     void Start()
     {
-        // Try to find the text on this object or its children if it wasn't assigned in the Inspector
-        if (endRoomText == null) { endRoomText = GetComponentInChildren<TextMeshPro>(); }
-
-        if (endRoomText != null)
-        {
-            endRoomText.text = endRoomMessage;
-        }
-        else
-        {
-            Debug.LogWarning("RestartGame: No End Room Text assigned.");
-        }
+        
     }
 
     // Called by PlayerInteraction when the player clicks this object
@@ -45,5 +35,10 @@ public class RestartGame : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         Debug.Log($"Restarting scene: {currentScene.name}");
         SceneManager.LoadScene(currentScene.buildIndex);
+    }
+
+    public void SetEndText()
+    {
+        endRoomText.text = endRoomMessage;
     }
 }

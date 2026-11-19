@@ -8,6 +8,7 @@ public class LevelExit : MonoBehaviour
     [SerializeField] private GameObject puzzle;
     [SerializeField] private Material unlockedMaterial;
     [SerializeField] private AudioManager audioManager;
+    [SerializeField] RestartGame restartGame;
 
     private Renderer doorRenderer;
     private Collider doorCollider;
@@ -35,6 +36,12 @@ public class LevelExit : MonoBehaviour
 
         // Turn off the collider
         doorCollider.enabled = false;
+
+        if (restartGame)
+        {
+            restartGame.SetEndText();
+        }
+        else return;
     }
 }
 

@@ -65,6 +65,11 @@ public class PlayerInteraction : MonoBehaviour
                         puzzle3.Interact(this.gameObject);
                         break;
 
+                    case "Puzzle4":
+                        Puzzle4 puzzle4 = hit.collider.GetComponent<Puzzle4>();
+                        puzzle4.Interact(this.gameObject);
+                        break;
+
                     default:
                         Debug.Log("Shape Not Found");
                         break;
@@ -111,6 +116,8 @@ public class PlayerInteraction : MonoBehaviour
             if (puzzle2) { puzzle2.OnClose(this.gameObject); }
             Puzzle3 puzzle3 = FindAnyObjectByType<Puzzle3>();
             if (puzzle3) { puzzle3.OnClose(this.gameObject); }
+            Puzzle4 puzzle4 = FindAnyObjectByType<Puzzle4>();
+            if (puzzle4) { puzzle4.OnClose(this.gameObject); }
         }
     }
 

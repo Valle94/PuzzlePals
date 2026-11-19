@@ -11,6 +11,7 @@ public class Puzzle3 : MonoBehaviour
     [Header("Interface")]
     [SerializeField] Canvas playerMKCanvas;
     [SerializeField] Canvas playerCCanvas;
+    [SerializeField] TextMeshProUGUI[] progressTexts;
     [SerializeField] Sprite[] darkImages;
     [SerializeField] Sprite[] litImages;
 
@@ -91,6 +92,11 @@ public class Puzzle3 : MonoBehaviour
         {
             userSequence.Clear();
 
+            foreach (TextMeshProUGUI text in progressTexts)
+            {
+                text.text = $"Current Stage: {currentLength} / {maxSequenceLength}";
+            }
+
             // Play the sequence for the current round length
             yield return StartCoroutine(PlaySequenceRoutine(currentLength));
 
@@ -101,8 +107,8 @@ public class Puzzle3 : MonoBehaviour
             {
                 Debug.Log("Game Over! You entered the wrong sequence.");
                 SetButtonsInteractable(false);
-                leftAudio.PlayOneShot(failSound, 0.1f);
-                rightAudio.PlayOneShot(failSound, 0.1f);
+                leftAudio.PlayOneShot(failSound, 0.4f);
+                rightAudio.PlayOneShot(failSound, 0.4f);
 
                 ResetPuzzle();
             }
@@ -155,7 +161,7 @@ public class Puzzle3 : MonoBehaviour
             Image image = playerTwoButtons[index].GetComponent<Image>();
             image.sprite = litImages[index];
 
-            rightAudio.PlayOneShot(buttonSounds[index]);
+            rightAudio.PlayOneShot(buttonSounds[index], 1.5f);
 
             yield return new WaitForSeconds(flashDuration);
 
@@ -167,7 +173,7 @@ public class Puzzle3 : MonoBehaviour
             Image image = playerOneButtons[index].GetComponent<Image>();
             image.sprite = litImages[index];
 
-            leftAudio.PlayOneShot(buttonSounds[index]);
+            leftAudio.PlayOneShot(buttonSounds[index], 1.5f);
 
             yield return new WaitForSeconds(flashDuration);
 
@@ -231,6 +237,11 @@ public class Puzzle3 : MonoBehaviour
             Image image = playerOneButtons[i].GetComponent<Image>();
             image.sprite = darkImages[i];
         }
+
+        foreach (TextMeshProUGUI text in progressTexts)
+            {
+                text.text = string.Empty;
+            }
 
         currentState = State.WaitingToStart;
         userSequence.Clear();

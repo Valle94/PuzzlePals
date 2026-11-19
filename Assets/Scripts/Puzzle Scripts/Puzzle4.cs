@@ -54,14 +54,16 @@ public class Puzzle4 : MonoBehaviour
     private enum State { Idle, PlayerGuessing, Won, Lost }
     private State currentState = State.Idle;
 
-    // ============================================================
     // Lifecycle
-    // ============================================================
     void Start()
     {
         playerMKCanvas.GetComponent<Canvas>().enabled = false;
         playerCCanvas.GetComponent<Canvas>().enabled = false;
         guessInput.characterLimit = wordLength;
+        if (guessInput.placeholder is TMP_Text placeholderText)
+        {
+            placeholderText.text = $"Enter guess...";
+        }
         submitButton.GetComponentInChildren<TextMeshProUGUI>().text = "Submit";
         SetInputInteractable(false);
         LoadWordLists();
@@ -91,9 +93,7 @@ public class Puzzle4 : MonoBehaviour
             playerCCanvas.GetComponent<Canvas>().enabled = false;
     }
 
-    // ============================================================
     // Round setup
-    // ============================================================
     private void StartNewRound()
     {
         if (currentState == State.PlayerGuessing) return; // already running
@@ -123,9 +123,7 @@ public class Puzzle4 : MonoBehaviour
         else if (currentState == State.Lost) ResetPuzzle(); // already running
     }
 
-    // ============================================================
     // Player 1 submits a guess
-    // ============================================================
     private void OnGuessSubmitted()
     {
         if (currentState != State.PlayerGuessing) return;
@@ -182,7 +180,11 @@ public class Puzzle4 : MonoBehaviour
             leftAudio.PlayOneShot(failSound, 0.2f);
             rightAudio.PlayOneShot(failSound, 0.2f);
             submitButton.GetComponentInChildren<TextMeshProUGUI>().text = "Retry";
-            submitButton.enabled = true;
+            SetInputInteractable(true);
+            if (guessInput.placeholder is TMP_Text placeholderText)
+            {
+                placeholderText.text = $"The word was {masterWord}";
+            }
             yield break;
         }
 
@@ -190,9 +192,7 @@ public class Puzzle4 : MonoBehaviour
         UpdateRemainingUI();          // NEW
     }
 
-    // ============================================================
     // Player 2 reveal — colors only, one tile at a time
-    // ============================================================
     IEnumerator RevealRowRoutine(int row, int[] pattern)
     {
         for (int col = 0; col < wordLength; col++)
@@ -207,7 +207,7 @@ public class Puzzle4 : MonoBehaviour
             if (revealSounds != null && soundIdx < revealSounds.Length && revealSounds[soundIdx] != null)
                 rightAudio.PlayOneShot(revealSounds[soundIdx], 0.4f);
 
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(0.8f);
         }
         yield return new WaitForSeconds(0.15f);
     }
@@ -219,9 +219,7 @@ public class Puzzle4 : MonoBehaviour
         _ => absentColor
     };
 
-    // ============================================================
     // Standard Wordle scoring — correct for duplicate letters
-    // ============================================================
     private int[] EvaluateGuess(string target, string guess)
     {
         int len = wordLength;
@@ -250,9 +248,7 @@ public class Puzzle4 : MonoBehaviour
         return result;
     }
 
-    // ============================================================
     // Reset & clear
-    // ============================================================
     public void ResetPuzzle()
     {
         StartNewRound();
@@ -261,10 +257,14 @@ public class Puzzle4 : MonoBehaviour
         currentRow = 0;
         masterWord = null;
         guessInput.text = string.Empty;
-        SetInputInteractable(false);
+        if (guessInput.placeholder is TMP_Text placeholderText)
+        {
+            placeholderText.text = $"Enter guess...";
+        }
+        //SetInputInteractable(false);
         ClearAllTiles();
         ClearAllGuessRows();
-        UpdateRemainingUI();          // NEW
+        UpdateRemainingUI();
     }
 
     private void ClearAllTiles()
@@ -281,9 +281,7 @@ public class Puzzle4 : MonoBehaviour
             if (cell != null) cell.text = string.Empty;
     }
 
-    // ============================================================
     // Helpers
-    // ============================================================
     private void SetInputInteractable(bool state)
     {
         if (guessInput != null) guessInput.interactable = state;
@@ -317,9 +315,7 @@ public class Puzzle4 : MonoBehaviour
         }
     }
 
-    // ============================================================
     // Word list loading
-    // ============================================================
     private void LoadWordLists()
     {
         if (wordListFile != null)
